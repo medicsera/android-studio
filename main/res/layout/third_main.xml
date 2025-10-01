@@ -1,0 +1,107 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attributes"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="#8000B2"
+        android:textColor="#FFFFFF"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите текст"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/button_black_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ЧЕРНЫЙ ТЕКСТ"
+            android:background="#8000B2"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/button_red_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="КРАСНЫЙ ТЕКСТ"
+            android:background="#8000B2"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/button_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="РАЗМЕР - 8SP"
+            android:background="#8000B2"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/button_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="РАЗМЕР - 24SP"
+            android:background="#8000B2"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/button_white_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="БЕЛЫЙ ФОН"
+            android:background="#8000B2"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/button_yellow_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ЖЕЛТЫЙ ФОН"
+            android:background="#8000B2"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+    </LinearLayout>
+</LinearLayout>
