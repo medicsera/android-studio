@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -32,8 +33,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.firstapp.ui.theme.FirstAppTheme
-
-
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +68,13 @@ fun AppNav() {
             )
         }
         composable("grid") {
-            InfoGrid(onNavigateBack = { navController.popBackStack() })
+            InfoGrid (
+                onNavigateBack =  { navController.popBackStack() },
+                onNavigateToInfo = { navController.navigate("info")}
+            )
+        }
+        composable("info"){
+            BusinessCardScreen(onNavigateBack = { navController.popBackStack()} )
         }
     }
 }
@@ -114,7 +119,7 @@ fun CompletedScreen(onNavigateToGrid: () -> Unit, onNavigateBack: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_task_completed), // файл в drawable
+                painter = painterResource(id = R.drawable.ic_task_completed),
                 contentDescription = null,
                 modifier = Modifier.size(120.dp)
             )
@@ -176,7 +181,7 @@ fun InfoCell(
 }
 
 @Composable
-fun InfoGrid(onNavigateBack: () -> Unit) {
+fun InfoGrid(onNavigateBack: () -> Unit, onNavigateToInfo: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         Row(modifier = Modifier.weight(1f)) {
             InfoCell(
@@ -207,6 +212,76 @@ fun InfoGrid(onNavigateBack: () -> Unit) {
             )
         }
     }
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomStart){
+        Button(onClick = onNavigateBack) {
+            Text("<-")
+        }
+    }
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd){
+        Button(onClick = onNavigateToInfo) {
+            Text("->")
+        }
+    }
+}
+
+@Composable
+fun ContactRow(iconRes: Int, content: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .padding(vertical = 4.dp)
+    ) {
+        Image(
+            painter = painterResource(id = iconRes),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = content, fontSize = 16.sp)
+    }
+}
+
+@Composable
+fun BusinessCardScreen(
+    modifier: Modifier = Modifier,
+    avatarRes: Int = R.drawable.avatar,
+    phoneRes: Int = R.drawable.telephone,
+    telegramRes: Int = R.drawable.telegram,
+    mailRes: Int = R.drawable.mail,
+    onNavigateBack: () -> Unit
+
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = avatarRes),
+            contentDescription = null,
+            modifier = Modifier
+                .size(120.dp)
+                .padding(bottom = 16.dp)
+        )
+        Text(
+            text = stringResource(R.string.full_name),
+            fontWeight = FontWeight.Bold,
+            fontSize = 28.sp
+        )
+        Text(
+            text = stringResource(R.string.title),
+            fontWeight = FontWeight.Medium,
+            fontSize = 18.sp,
+            modifier = Modifier.padding(bottom = 32.dp)
+        )
+
+        ContactRow(phoneRes, stringResource(R.string.phone))
+        ContactRow(telegramRes, stringResource(R.string.handle))
+        ContactRow(mailRes, stringResource(R.string.email))
+    }
+
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomStart){
         Button(onClick = onNavigateBack) {
             Text("<-")

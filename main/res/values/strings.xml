@@ -7,4 +7,11 @@
 
     <string name="all_tasks_completed">All tasks completed</string>
     <string name="nice_work">Nice work!</string>
+
+    <string name="full_name">Anton Mirko</string>
+    <string name="title">Developer</string>
+    <string name="phone">+7-913-139-11-93</string>
+    <string name="handle">@sseraZzz</string>
+    <string name="email">anton.mirko.0550@gmail.com</string>
+
 </resources>
